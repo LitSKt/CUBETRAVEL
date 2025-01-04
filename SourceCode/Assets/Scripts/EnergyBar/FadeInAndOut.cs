@@ -8,7 +8,7 @@ public class FadeInAndOut : MonoBehaviour
     public float fadeInLerpSpeed;
     public float fadeOutSpeed;
     public float fadeOutLerpSpeed;
-    [Tooltip("Lower value makes energy loop fade when it has a more stable value. P.S. Lower value makes it fade slower. Recommended value: 0.03 ~ 0.6")]
+    [Tooltip("Lower value makes energy loop fade when it has a more stable value. P.S. Lower value makes it fade slower. Recommended value: 0.02 ~ 0.05")]
     public float fadeThresholdValue;
 
     Transform trans;

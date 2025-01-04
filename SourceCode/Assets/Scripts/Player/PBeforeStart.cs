@@ -25,7 +25,7 @@ public class PBeforeStart : MonoBehaviour
         rig = trans.GetComponent<Rigidbody>();
 
         //设置位置
-        trans.position = new Vector3(trans.position.x, trans.GetComponent<POUTOFBoundary>().respawnHeight, trans.position.z);
+        trans.position = new Vector3(trans.position.x, trans.GetComponent<POUTOFBoundary>().RespawnHeight, trans.position.z);
         cam.position = trans.position + new Vector3(0, 50, -50);
         startLetters.gameObject.SetActive(true);
         startLetters.position = cam.position + new Vector3(-0.1f, -46, 56);
