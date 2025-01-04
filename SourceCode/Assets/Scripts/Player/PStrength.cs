@@ -3,6 +3,7 @@ using UnityEngine;
 
 public class PStrength : MonoBehaviour
 {
+    public float recoverMultiplier;
     public float maxStrength;
     public float maxStrengthChangingSpeed;
     public float speedChangingAcceleration;
@@ -78,18 +79,18 @@ public class PStrength : MonoBehaviour
 
             //体力的恢复会比消耗时更快
             //strength recover speed is faster than consume
-            if (currentSCS + 1.5f * currentSCA * Time.deltaTime < maxStrengthChangingSpeed)
+            if (currentSCS + recoverMultiplier * currentSCA * Time.deltaTime < maxStrengthChangingSpeed)
             {
-                currentSCS += 1.5f * currentSCA * Time.deltaTime;
+                currentSCS += recoverMultiplier * currentSCA * Time.deltaTime;
             }
             else
             {
                 currentSCS = maxStrengthChangingSpeed;
             }
 
-            if (CurrentStrength + 2f * currentSCS * Time.deltaTime < maxStrength)
+            if (CurrentStrength + recoverMultiplier * currentSCS * Time.deltaTime < maxStrength)
             {
-                CurrentStrength += 2f * currentSCS * Time.deltaTime;
+                CurrentStrength += recoverMultiplier * currentSCS * Time.deltaTime;
             }
             else
             {

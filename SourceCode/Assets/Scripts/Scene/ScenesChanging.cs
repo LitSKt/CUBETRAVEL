@@ -10,6 +10,8 @@ public class ScenesChanging : MonoBehaviour
     Transform player;
     GameObject[] scenes;
 
+    public int CurrentScene { get => currentScene; set => currentScene = value; }
+
     public bool IsFinishThisScene { get => isFinishThisScene; set => isFinishThisScene = value; }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -25,18 +27,18 @@ public class ScenesChanging : MonoBehaviour
         GetChildrenCodeBlock();
     }
 
-    // Update is called once per frame
+    // Rigidbody
     void FixedUpdate()
     {
         //游戏开始后执行
         if (player.GetComponent<PBeforeStart>().IsStarted)
         {
             //如果完成当前关卡且玩家已经出界(看不见地面)，则切换关卡
-            if (isFinishThisScene && player.GetComponent<POUTOFBoundary>().CanPlayerSeeScene)
+            if (isFinishThisScene && !player.GetComponent<POUTOFBoundary>().CanPlayerSeeScene)
             {
                 ChangeSceneCodeBlock();
                 isFinishThisScene = false;
-                player.GetComponent<POUTOFBoundary>().CanPlayerSeeScene = false;
+                player.GetComponent<POUTOFBoundary>().CanPlayerSeeScene = true;
             }
         }
     }
@@ -53,7 +55,7 @@ public class ScenesChanging : MonoBehaviour
     //如果玩家通过当前关卡，则切换下一关卡
     void ChangeSceneCodeBlock()
     {
-        //实现关卡循环，暂定循环
+        //实现关卡循环
         currentScene = (currentScene + 1) % scenes.Length;
 
         for (int i = 0; i < scenes.Length; ++i)
